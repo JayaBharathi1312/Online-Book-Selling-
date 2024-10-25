@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <style>   
+     body{
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: rgb(241, 159, 159);
+    }
+
+    #calculator{
+        font-family: Algerian;
+        background-color: rgb(226, 93, 213);
+        border-radius: 15px;
+        max-width: 600px;
+        overflow: hidden;
+    }
+    #display{
+        width: 100%;
+        padding: 20px;
+        font-size: 3rem;
+        text-align: left;
+        border: none;
+        background-color: rgb(252, 255, 254);
+        color: black;
+    }
+    #keys{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        padding: 25px;
+    }
+    
+    button{
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        border: none;
+        background-color: rgb(121, 146, 194);
+        color: aliceblue;
+        font-size: 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: rgb(151, 173, 211);
+    }
+    button:active{
+        background-color: rgb(49, 114, 219);
+    }
+    .operator-btn {
+        background-color: rgb(65, 216, 35);
+    }
+
+    .operator-btn:hover {
+        background-color: rgb(55, 98, 82);
+    }
+    .operator-btn:active {
+        background-color: rgb(2, 74, 48);
+    }
+
+</style>
+</head>
+<body>
+
+    <div id="calculator">
+        <input id="display" readonly>
+        <div id="keys">
+            <button onclick="appendToDisplay('(')" class="operator-btn">(</button>
+            <button onclick="appendToDisplay(')')" class="operator-btn">)</button>
+            <button onclick="clearDisplay()" class="operator-btn">C</button>
+            <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
+            <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
+            
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+            <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendToDisplay('^')" class="operator-btn">^</button>
+
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+
+            <!-- Scientific functions -->
+            <button onclick="appendToDisplay('Math.sin(')">sin</button>
+            <button onclick="appendToDisplay('Math.cos(')">cos</button>
+            <button onclick="appendToDisplay('Math.tan(')">tan</button>
+            <button onclick="appendToDisplay('Math.log(')">log</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">√</button>
+        </div>
+    </div>
+    <script>
+        const display = document.getElementById("display");
+
+        function appendToDisplay(input) {
+            display.value += input;
+        }
+
+        function clearDisplay() {
+            display.value = "";
+        }
+
+        function calculate() {
+            try {
+                // Replace the caret (^) with exponentiation (**)
+                let expression = display.value.replace('^', '**');
+                display.value = eval(expression);
+            } catch (error) {
+                display.value = "Error";
+            }
+        }
+    </script>
+    
+</body>
+</html>

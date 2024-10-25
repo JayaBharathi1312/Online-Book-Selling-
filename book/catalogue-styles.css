@@ -1,0 +1,96 @@
+/* Reset some basic elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-image: url('catt.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: auto;
+    background-size: cover;
+}
+
+header {
+    background-color: #686FA9;
+    color: rgb(239, 236, 233);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    border: 1px solid rgb(17, 30, 92); /* Added a thicker outer border */
+    border-width: 8px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border: 2.5px solid rgb(17, 30, 92); /* Ensuring all table cells have the same border */
+    
+    font-weight: 700;
+    color: rgb(26, 27, 21);
+}
+
+th {
+    background-color: #8ea5d7;
+    color: rgb(16, 17, 17);
+}
+
+td img {
+    width: 100px;
+    height: auto;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #9445A8;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4553A8;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    th, td {
+        padding: 10px;
+    }
+
+    td img {
+        width: 80px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue</title>
+    <link rel="stylesheet" href="catalogue-styles.css">
+</head>
+<body>
+    <header>
+        <h1>Book Store Catalogue</h1>
+    </header>
+    <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book Image</th>
+                        <th>Book Name</th>
+                        <th>Book Price</th>
+                        <th>Add to Cart</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="ece1.jpg" alt="Book 1"></td>
+                        <td>ABSTRACT BROCHURE DESIGN</td>
+                        <td>&#8377; 399</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="ece2.jpg" alt="Book 2"></td>
+                        <td>CRACKING THE ECE SKILLS</td>
+                        <td>&#8377; 499</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="ece3.jpg" alt="Book 3"></td>
+                        <td>MEDICAL ELECTRONICS</td>
+                        <td>&#8377; 399</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="ece4.jpg" alt="Book 3"></td>
+                        <td>COMMUNICATION NETWORKS</td>
+                        <td>  &#8377; 15.99</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>    
+               
+        
+                    <tr>
+                        <td><img src="cse1.jpg" alt="Book 1"></td>
+                        <td>COMPUTER NETWORKING</td>
+                        <td>&#8377; 399</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="cse2.jpg" alt="Book 2"></td>
+                        <td>NEW PROGRAMMERS START HERE-JS</td>
+                        <td>&#8377; 489</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="cse3.jpg" alt="Book 3"></td>
+                        <td>COMPUTERS MADE EASY</td>
+                        <td>&#8377; 699</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="cse4.jpg" alt="Book 3"></td>
+                        <td>THE PYTHON WORKSHOP</td>
+                        <td>&#8377; 509</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+             
+        
+                
+                    <tr>
+                        <td><img src="eee1.jpg" alt="Book 1"></td>
+                        <td>OBJECTIVE ELECTRICAL TECHNOLOGY</td>
+                        <td>&#8377; 309</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="eee2.jpg" alt="Book 2"></td>
+                        <td>PRACTICAL BROILER OPERATION ENGINEERING <br>and POWER PLANT</td>
+                        <td>&#8377; 250</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="eee3.jpg" alt="Book 3"></td>
+                        <td>SIGNALS AND SYSTEMS</td>
+                        <td>&#8377; 676</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="eee4.jpg" alt="Book 3"></td>
+                        <td>ELECTRICAL TECHNOLOGY</td>
+                        <td>&#8377; 879</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+               
+       
+                    <tr>
+                        <td><img src="civil1.jpg" alt="Book 1"></td>
+                        <td>CIVIL ENGINEERING <br> THROUGH OBJECTIVE TYPE QUESTIONS</td>
+                        <td>&#8377; 399</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="civil2.jpg" alt="Book 2"></td>
+                        <td>A BASICS OF CIVIL</td>
+                        <td>&#8377; 549</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="civil3.jpg" alt="Book 3"></td>
+                        <td>CONCEPT BOOSTER FOR <br>CIVIL ENGINEERING</td>
+                        <td>&#8377; 369</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="civil4.jpg" alt="Book 3"></td>
+                        <td>CIVIL ENGINEERING DRAWING <br>AND HOUSE PLANNING</td>
+                        <td>&#8377; 749</td>
+                        <td><button>Add to Cart</button></td>
+                    </tr>
+                </tbody>
+            </table>
+      
+    </main> 
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const addToCartButtons = document.querySelectorAll('button');
+    
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const bookElement = event.target.closest('tr');
+                const book = {
+                    image: bookElement.querySelector('img').src,
+                    name: bookElement.querySelector('td:nth-child(2)').innerText,
+                    price: parseFloat(bookElement.querySelector('td:nth-child(3)').innerText.replace('₹', '').trim()),
+                    quantity: 1
+                };
+                addToCart(book);
+                window.location.href = 'cart.html';
+            });
+        });
+    
+        function addToCart(book) { 
+            let cart = localStorage.getItem('cart');
+            cart = cart ? JSON.parse(cart) : [];
+            const existingBookIndex = cart.findIndex(item => item.name === book.name);
+    
+            if (existingBookIndex > -1) {
+                cart[existingBookIndex].quantity += 1;
+            } else {
+                cart.push(book);
+            }
+    
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    });
+</script>  
+</body>
+</html>

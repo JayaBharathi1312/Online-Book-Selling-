@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Cart</title>
+    <style>
+	body {
+		font-family: Arial, sans-serif;
+		background-image: url('cartimg.jpg');
+		background-size: cover;
+        background-repeat:no-repeat;
+        background-position: center;
+	}
+	
+	.container {
+		width: 80%;
+		margin: 0 auto;
+		padding: 20px;
+		border-radius: 10px;
+		color:rgb(13, 5, 17);
+		font-weight: 700;
+	}
+	
+	h1 {
+		text-align: center;
+		color:rgb(61, 57, 63);
+	}
+	
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin-bottom: 20px;
+	}
+	
+	th, td {
+		padding: 20px;
+		text-align: center;
+		font-weight: 500px;
+		border: 1px solid rgb(72, 47, 154);
+		border-width: 8px;
+	}
+	
+	img {
+		width: 60px;
+		height: auto;
+	}
+	
+	.cart-summary {
+		text-align: center;
+	}
+	
+	button {
+		padding: 10px 20px;
+		background-color: #344aab;
+		color: white;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	
+	button:hover {
+		background-color: #1984e2;
+	}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>IMAGE</th>
+                    <th>BOOK NAME</th>
+                    <th>PRICE</th>
+                    <th>QUANTITY</th>
+                    <th>TOTAL</th>
+                    <th>REMOVE</th>
+                </tr>
+            </thead>
+            <tbody id="cartItems">
+                <!-- Dynamic rows will be appended here by JavaScript -->
+            </tbody>
+        </table>
+        <div class="cart-summary">
+            <h3>Total: &#8377; <span id="grandTotal">0.00</span></h3>
+            <button id="proceedButton">Proceed</button>
+        </div>
+    </div>
+    <script src="script1.js"></script>
+</body>
+</html>

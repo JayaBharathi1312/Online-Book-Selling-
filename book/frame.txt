@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Frame</title>
+    <style>
+       *{
+        margin:0;
+        padding:0;
+       }
+    </style>
+</head>
+<body>
+    <frameset rows="30,70" >
+        <frame src="top.html" name="top">
+        <frameset cols="25,75">
+            <frame src="left.html"name="left" >
+            <frame src="right.html" name="rightframe">
+        </frameset>
+    </frameset>
+</body>
+</html>
